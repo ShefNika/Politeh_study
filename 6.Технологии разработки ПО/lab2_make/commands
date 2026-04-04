@@ -1,0 +1,3 @@
+./build/bin/app-static ./app/png_app/DejaVuSerif.ttf ./build/bin/static_out.png "static brown fox"
+./build/bin/app-dynamic ./app/png_app/DejaVuSans.ttf ./build/bin/dynamic_out.png "dynamic brown fox"
+./elfload/elfloader ./build/bin/app-blob ./app/png_app/sahadeva.ttf ./build/bin/blob_out.png "blob brown fox"
