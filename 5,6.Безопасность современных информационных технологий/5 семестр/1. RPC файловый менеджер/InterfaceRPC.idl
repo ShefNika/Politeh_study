@@ -1,0 +1,48 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    uuid(ed6b0b24-b3d2-4304-a3e9-486fd709499d),
+        version(1.0)
+]
+interface InterfaceRPC
+{
+    int OpenSession(
+        [in]handle_t hBinding,
+        [in, string] unsigned char* login,
+        [in, string] unsigned char* password,
+        [out] int* servErrorCode
+    );
+
+    int CloseSession(
+        [in]handle_t hBinding,
+        [out] int* servErrorCode
+    );
+
+    int CopyToServer(
+        [in]handle_t hBinding,
+        [in, string] unsigned char* servUNCPath,
+        [in] long fileSize,
+        [in, size_is(fileSize)] unsigned char fileData[],
+        [out] int* servErrorCode
+    );
+
+    long FileSize(
+        [in] handle_t hBinding,
+        [in, string] unsigned char* Path  
+    );
+
+    int DownloadFromServer(
+        [in]handle_t hBinding,
+        [in, string] unsigned char* servUNCPath,
+        [in] long servFileSize,
+        [out, size_is(servFileSize)] unsigned char Arr[],
+        [out] int* servErrorCode
+    );
+
+    int DeleteOnServer(
+        [in]handle_t hBinding,
+        [in, string] unsigned char* servUNCPath,
+        [out] int* servErrorCode
+    );
+}
